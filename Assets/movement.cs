@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    public float Speed;
-  
+    public bool isPLayer1;
+    public float speed;
+    public Rigidbody2D rb;
+
+    private float movement3;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +19,16 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float VerticalAxis = Input.GetAxis("Vertical");
-        Vector3 movement2 = new Vector3(0, VerticalAxis * Speed * Time.deltaTime, 0);
-        transform.position = transform.position + movement2;
-        print(VerticalAxis);
+        if (isPLayer1)
+        {
+            movement3 = Input.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            movement3 = Input.GetAxisRaw("Vertical2");
+        }
+
+        rb.velocity = new Vector2(rb.velocity.x, movement3 * speed);
 
     }
 }
