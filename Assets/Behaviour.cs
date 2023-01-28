@@ -18,5 +18,10 @@ public class Behaviour : MonoBehaviour
         float HorizontalAxis = Input.GetAxis("Horizontal");
         Vector3 movement = new Vector3(HorizontalAxis * Speed * Time.deltaTime, 0);
         transform.position = transform.position + movement;
+
+        float VerticalAxis = Input.GetAxis("Vertical");
+        Vector3 movement2 = new Vector3(0,VerticalAxis * Speed * Time.deltaTime,0);
+        transform.position = transform.position + movement2;
+        print(VerticalAxis);
     }
 }
